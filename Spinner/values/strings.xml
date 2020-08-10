@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">SpinnerDemo</string>
+    <string name="choose_month">Choose Month:</string>
+    <string name="choose_year">Choose Year:</string>
+    <string name="spinner_demo">Spinner Demo</string>
+    <string name="submit">Submit</string>
+
+    <string-array name="spinner_year">
+        <item>2019</item>
+        <item>2018</item>
+        <item>2017</item>
+        <item>2016</item>
+        <item>2015</item>
+        <item>2014</item>
+    </string-array>
+
+</resources>
