@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Is it Hot?</string>
+    <string name="enter_temp">Enter temperature</string>
+    <string name="temperature_converter">Temperature Converter</string>
+    <string name="convert">Convert</string>
+    <string name="clear">Clear</string>
+    <string-array name="temp_spinner">
+        <item>Celsius</item>
+        <item>Fahrenheit</item>
+        <item>Kelvin</item>
+    </string-array>
+</resources>
