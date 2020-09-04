@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UpdateEmployeeActivity">
+
+    <TextView
+        android:id="@+id/heading_text_view_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10sp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:padding="5sp"
+        android:text="@string/update_an_entry"
+        android:textColor="#03A9F4"
+        android:textSize="36sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="#03A9F4"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/employee_id_edit_text_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="20sp"
+            android:layout_marginRight="10sp"
+            android:background="#FFF"
+            android:ems="10"
+            android:hint="@string/enter_id_here"
+            android:importantForAutofill="no"
+            android:inputType="numberSigned"
+            android:padding="7sp"
+            android:textSize="27sp" />
+
+        <EditText
+            android:id="@+id/employee_name_edit_text_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginRight="10sp"
+            android:background="#FFF"
+            android:ems="10"
+            android:hint="@string/enter_name_here"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:padding="7sp"
+            android:textSize="27sp" />
+
+        <Spinner
+            android:id="@+id/department_spinner_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginRight="10sp"
+            android:background="#FFF"
+            android:entries="@array/create_spinner"
+            android:padding="7sp"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/employee_salary_edit_text_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginRight="10sp"
+            android:background="#FFF"
+            android:ems="10"
+            android:hint="@string/enter_salary_here"
+            android:importantForAutofill="no"
+            android:inputType="numberSigned"
+            android:padding="7sp"
+            android:textSize="27sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="40sp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20sp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/create_button_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2.5sp"
+                android:layout_weight="1"
+                android:background="#FFF"
+                android:padding="7sp"
+                android:text="@string/update_entry"
+                android:textColor="#03A9F4"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/clear_button_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2.5sp"
+                android:layout_weight="1"
+                android:background="#FFF"
+                android:padding="7sp"
+                android:text="@string/clear_entry"
+                android:textColor="#03A9F4"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="ButtonStyle" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/bottom_text_view_update"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
+        android:padding="5sp"
+        android:text="@string/note_entry_is_updated_based_nupon_the_id_number"
+        android:textColor="#4B4B4B"
+        android:textSize="14sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/go_back_button_update"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/go_back_button_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#03A9F4"
+        android:padding="7sp"
+        android:text="@string/go_back"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ButtonStyle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
