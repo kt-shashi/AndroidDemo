@@ -114,30 +114,76 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         builder.setCancelable(false);    //user cannot cancel the dialog, must take an action
 
         //Set Buttons for Dialog
-        builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+        
+        //Method 1:
+        
+//         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+//             @Override
+//             public void onClick(DialogInterface dialogInterface, int i) {
+
+//                 String name = usernameEditText.getText().toString().trim();
+//                 String password = passwordEditText.getText().toString().trim();
+
+//                 if (name.isEmpty() || password.isEmpty()) {
+//                     Toast.makeText(MainActivity.this, "Cannot be Empty", Toast.LENGTH_SHORT).show();
+//                     builder.create().dismiss();
+//                 }
+
+//                 nameTextView.setText(name);
+//                 passwordTextView.setText(password);
+//             }
+//         });
+//         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//             @Override
+//             public void onClick(DialogInterface dialogInterface, int i) {
+//                 builder.create().dismiss();
+//             }
+//         });
+//       builder.show();        
+        
+        //Method 2:
+        //We get data from layout_dialog.xml and set data to activity_main.xml
+
+        //Inflate the view
+        LayoutInflater layoutInflater = getLayoutInflater();
+        View view = layoutInflater.inflate(R.layout.layout_dailog, null);
+
+        final EditText usernameEditText = view.findViewById(R.id.name_edit_text);
+        final EditText passwordEditText = view.findViewById(R.id.password_edit_text);
+        final Button saveButton = view.findViewById(R.id.buttonSave);
+
+        //Create Builder object
+        builder = new AlertDialog.Builder(this);
+ 
+        //set Title Message and Icon
+        builder.setTitle("Login");
+        builder.setMessage("Enter details");
+        builder.setView(view);
+
+        builder.setCancelable(false);    //user cannot cancel the dialog, must take an action
+
+        final AlertDialog alertDialog = builder.create();
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
+            public void onClick(View view) {
 
                 String name = usernameEditText.getText().toString().trim();
                 String password = passwordEditText.getText().toString().trim();
 
                 if (name.isEmpty() || password.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Cannot be Empty", Toast.LENGTH_SHORT).show();
-                    builder.create().dismiss();
+                    alertDialog.dismiss();
                 }
 
                 nameTextView.setText(name);
                 passwordTextView.setText(password);
-            }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                builder.create().dismiss();
+
+                alertDialog.dismiss();
             }
         });
 
-        builder.show();
+        alertDialog.show();
 
     }
 }
