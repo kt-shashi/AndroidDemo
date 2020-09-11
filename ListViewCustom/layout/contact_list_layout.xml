@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/contact_image_view_contact_layout"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/contact_name_text_view_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/contact_name"
+        android:textColor="#1287A5"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/contact_image_view_contact_layout"
+        app:layout_constraintTop_toTopOf="@+id/contact_image_view_contact_layout" />
+
+    <TextView
+        android:id="@+id/contact_phone_text_view_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/ph_number"
+        android:textColor="#090909"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/contact_image_view_contact_layout"
+        app:layout_constraintEnd_toEndOf="@+id/contact_name_text_view_layout"
+        app:layout_constraintStart_toStartOf="@+id/contact_name_text_view_layout"
+        app:layout_constraintTop_toBottomOf="@+id/contact_name_text_view_layout" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
