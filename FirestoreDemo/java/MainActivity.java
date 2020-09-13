@@ -212,6 +212,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 for (QueryDocumentSnapshot snapshot : queryDocumentSnapshots) {
                     Log.d("shashi_debug", "ID: " + snapshot.getId());
+                    JournalModelClass journal = snapshot.toObject(JournalModelClass.class);
                 }
 
                 for (QueryDocumentSnapshot snapshot : queryDocumentSnapshots) {
@@ -294,43 +295,69 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onStart() {
         super.onStart();
 
-        //If there is any change in the data, snapshot listner is called
+//        //If there is any change in the data, snapshot listner is called
+//
+//        //We can either stop the listner in onStop, or we can pass Activity to destroy it once we are outside
+//        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+//            @Override
+//            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+//
+//                if (e != null) {
+//                    Toast.makeText(MainActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//                //if data is present, display it
+//                if (documentSnapshot != null && documentSnapshot.exists()) {
+//
+//                    //Using Model class
+//                    JournalModelClass journalData = documentSnapshot.toObject(JournalModelClass.class);
+//                    String title = journalData.getTitle();
+//                    String thought = journalData.getThought();
+//                    if (journalData != null) {
+//                        resultTitleTextView.setText(title);
+//                        resultThoughTextView.setText(thought);
+//                    }
+//
+//                    //Using Hashmap
+////                    String title = documentSnapshot.getString(KEY_TITLE);
+////                    String thought = documentSnapshot.getString(KEY_THOUGHT);
+////
+////                    resultTitleTextView.setText(title);
+////                    resultThoughTextView.setText(thought);
+//                }
+//                //If there is no data, maybe the user deleted it, so we have to clear the previous data shown
+//                else {
+//                    resultTitleTextView.setText("");
+//                    resultThoughTextView.setText("");
+//                }
+//            }
+//        });
 
-        //We can either stop the listner in onStop, or we can pass Activity to destroy it once we are outside
-        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+
+        //For multiple data
+        collectionReference.addSnapshotListener(this, new EventListener<QuerySnapshot>() {
             @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
 
                 if (e != null) {
-                    Toast.makeText(MainActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                //if data is present, display it
-                if (documentSnapshot != null && documentSnapshot.exists()) {
 
-                    //Using Model class
-                    JournalModelClass journalData = documentSnapshot.toObject(JournalModelClass.class);
-                    String title = journalData.getTitle();
-                    String thought = journalData.getThought();
-                    if (journalData != null) {
-                        resultTitleTextView.setText(title);
-                        resultThoughTextView.setText(thought);
-                    }
+                for (QueryDocumentSnapshot snapshot : queryDocumentSnapshots) {
+                    Log.d("shashi_debug", "ID: " + snapshot.getId());
+                    JournalModelClass journal = snapshot.toObject(JournalModelClass.class);
+                    resultTitleTextView.append("Title: " + journal.getTitle() + "\n");
+                    resultThoughTextView.append("Thought: " + journal.getThought() + "\n");
+                }
 
-                    //Using Hashmap
-//                    String title = documentSnapshot.getString(KEY_TITLE);
-//                    String thought = documentSnapshot.getString(KEY_THOUGHT);
-//
-//                    resultTitleTextView.setText(title);
-//                    resultThoughTextView.setText(thought);
+                for (QueryDocumentSnapshot snapshot : queryDocumentSnapshots) {
+                    Log.d("shashi_debug", "ID: " + snapshot.getString(KEY_TITLE));
+                    Log.d("shashi_debug", "ID: " + snapshot.getString(KEY_THOUGHT));
                 }
-                //If there is no data, maybe the user deleted it, so we have to clear the previous data shown
-                else {
-                    resultTitleTextView.setText("");
-                    resultThoughTextView.setText("");
-                }
+
             }
         });
+
     }
 
 
