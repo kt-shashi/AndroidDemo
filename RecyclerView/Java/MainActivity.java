@@ -11,61 +11,44 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    ProductsAdapter productsAdapter;
-    List<ProductsData> productsDataList;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setHasFixedSize(true);
+        ArrayList<DataModel> dataModelList = new ArrayList<>();
+        dataModelList = setData(dataModelList);
 
-        //Kis type se list banana hai
-        //LinearLayout me vertical list banta hai
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //Set up Recycler view
+        RecyclerView recyclerView;
+        RecyclerView recyclerView2;
+        recyclerView = findViewById(R.id.recycler_view_main);
+        recyclerView2 = findViewById(R.id.recycler2_view_main);
 
-        //Getting data
-        productsDataList = new ArrayList<>();
-        setProducts();
+        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getApplicationContext());
+        linearLayoutManager1.setOrientation(LinearLayoutManager.HORIZONTAL); // set Horizontal Orientation
 
-        productsAdapter = new ProductsAdapter(this, productsDataList);
-        //attach adapter to recycler view
-        recyclerView.setAdapter(productsAdapter);
+        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getApplicationContext());
+        linearLayoutManager2.setOrientation(LinearLayoutManager.VERTICAL); // set Horizontal Orientation
+
+        MyAdapter myAdapter = new MyAdapter(this, dataModelList);
+
+        recyclerView.setLayoutManager(linearLayoutManager1);
+        recyclerView.setAdapter(myAdapter);
+
+        recyclerView2.setLayoutManager(linearLayoutManager2);
+        recyclerView2.setAdapter(myAdapter);
+
     }
 
-    private void setProducts() {
+    private ArrayList setData(ArrayList<DataModel> arrayList) {
+        for (int i = 10; i < 20; i++) {
+            DataModel data = new DataModel();
+            data.setName("Name" + i);
+            data.setPhone("Phone" + i);
 
-        productsDataList.add(new ProductsData(
-                R.drawable.apple, "Apple", 50
-        ));
-
-
-        productsDataList.add(new ProductsData(
-                R.drawable.banana, "Banana", 30
-        ));
-
-        productsDataList.add(new ProductsData(
-                R.drawable.lemon, "Lemon", 8
-        ));
-
-        productsDataList.add(new ProductsData(
-                R.drawable.mango, "Mango", 55
-        ));
-
-        productsDataList.add(new ProductsData(
-                R.drawable.pineapple, "Pineapple", 56
-        ));
-
-        productsDataList.add(new ProductsData(
-                R.drawable.strawberry, "Strawberry", 45
-        ));
-
-        productsDataList.add(new ProductsData(
-                R.drawable.watermelon, "Watermelon", 80
-        ));
+            arrayList.add(data);
+        }
+        return arrayList;
     }
-
 }

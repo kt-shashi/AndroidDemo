@@ -1,35 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint_layout_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#E7CCC3"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/heading_text_view"
-        android:layout_width="match_parent"
+        android:id="@+id/heading_text_view_main"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:padding="7dp"
-        android:text="Trending Items"
-        android:textColor="#FFFFFF"
-        android:textSize="29sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:background="#FF5722"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/recycler_view_demo"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="15dp"
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:id="@+id/recycler_view_main"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/heading_text_view_main"
+        app:layout_constraintStart_toStartOf="@+id/heading_text_view_main"
+        app:layout_constraintTop_toBottomOf="@+id/heading_text_view_main" >
 
-</LinearLayout>
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler2_view_main"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/heading_text_view_main"
+        app:layout_constraintStart_toStartOf="@+id/heading_text_view_main"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_view_main" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
